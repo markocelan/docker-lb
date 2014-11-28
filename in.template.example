@@ -1,0 +1,23 @@
+global
+    daemon
+    maxconn 256
+
+defaults
+    mode http
+    timeout connect 5s
+    timeout client 60s
+    timeout server 60s
+    
+listen admin
+    bind *:8081
+    stats enable
+    stats uri /
+
+frontend app-in
+    bind *:8000
+    default_backend app-in-upstreams
+
+listen app-in-upstreams
+    option httpchk /
+    bind *:8000{{range service "PLACEHOLDER_SERVICE_NAME"}}
+    server {{.ID}} {{.Address}}:{{.Port}} check inter 60s maxconn 24{{end}}
