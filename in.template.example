@@ -4,9 +4,9 @@ global
 
 defaults
     mode http
-    timeout connect 5s
-    timeout client 60s
-    timeout server 60s
+    timeout connect 10s
+    timeout client 300s
+    timeout server 300s
     
 listen admin
     bind *:8081
