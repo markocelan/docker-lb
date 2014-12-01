@@ -18,6 +18,6 @@ frontend app-in
     default_backend app-in-upstreams
 
 listen app-in-upstreams
-    option httpchk /
+    option httpchk GET / HTTP/1.0
     bind *:8000{{range service "PLACEHOLDER_SERVICE_NAME"}}
     server {{.ID}} {{.Address}}:{{.Port}} check inter 60s maxconn 24{{end}}
