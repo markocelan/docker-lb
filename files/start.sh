@@ -10,4 +10,7 @@ curl -k -L "${CONFIG_TEMPLATE_URL}" | sed "s/PLACEHOLDER_SERVICE_NAME/${APP_NAME
 
 touch haproxy.pid
 
-./consul-template -wait 2s:5s -consul "${CONSUL}" -template "in.template:haproxy.cfg:haproxy -f haproxy.cfg -p haproxy.pid -sf $(<haproxy.pid)"
+# run initial HAProxy
+./reload.sh
+
+./consul-template -consul "${CONSUL}" -template "in.template:haproxy.cfg:./reload.sh"
