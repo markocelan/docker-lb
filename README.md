@@ -18,6 +18,9 @@ $ docker run --name=myapp-loadbalancer \
 	-e CONSUL=127.0.0.1:8500 \
 	markocelan/docker-lb
 ```
+  - port 8000 is where your upstream services get balanced
+  - port 8081 is where you can see your HAProxy status.
+
 
 APP_NAME is needed only when you are using example template. It is used so consul-template knows which service you are trying to balance.
 
