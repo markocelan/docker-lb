@@ -4,7 +4,7 @@ MAINTAINER marko.celan@gmail.com
 
 WORKDIR /app
 
-ENV CONSUL_TEMPLATE_VERSION 0.3.1
+ENV CONSUL_TEMPLATE_VERSION 0.8.0
 ENV CONSUL_NAME consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64
 
 ADD files/start.sh /app/start.sh
